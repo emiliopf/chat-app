@@ -1,0 +1,47 @@
+apiVersion: skaffold/v2alpha4
+kind: Config
+build:
+  artifacts:
+  - image: coches/users
+    context: microservices/users
+    sync:
+      manual:
+      - src: 'src/**/*.ts'
+        dest: .
+  - image: coches/rooms
+    context: microservices/rooms
+    sync:
+      manual:
+      - src: 'src/**/*.ts'
+        dest: .
+
+  - image: coches/rabbitmq-backend
+    context: microservices/rabbitmq-backend
+    sync:
+      manual:
+      - src: 'src/**/*.ts'
+        dest: .
+
+  - image: coches/frontend
+    context: microservices/frontend
+    docker:
+      dockerfile: dev.Dockerfile
+      # dockerfile: Dockerfile
+    sync:
+      manual:
+        - src: 'src/**/*.*'
+          dest: .
+
+deploy:
+  kubectl:
+    manifests:
+    # - ./microservices/*/k8s/*.yaml
+    - ./microservices/users/k8s/*.yaml
+    - ./microservices/rooms/k8s/*.yaml
+    - ./microservices/rabbitmq-backend/k8s/*.yaml
+    - ./microservices/frontend/k8s/*.yaml
+
+    - ./databases/*/k8s/*.yaml
+    - ./rabbitmq/*.yaml
+    
+    - ./ingress.yaml

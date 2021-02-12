@@ -1,0 +1,41 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: emilio-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/websocket-services: "rabbitmq"
+spec:
+  rules:
+    - host: emiliodev
+      http:
+        paths:
+          - path: /ws
+            pathType: Prefix
+            backend:
+              service: 
+                name: rabbitmq
+                port: 
+                  # number: 15675
+                  number: 15674
+          - path: /api/rooms
+            pathType: Prefix
+            backend:
+              service:
+                name: rooms
+                port:
+                  number: 3000
+          - path: /api/rabbitmq
+            pathType: Prefix
+            backend:
+              service:
+                name: rabbitmq-backend
+                port:
+                  number: 3000
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: frontend
+                port:
+                  # number: 80
+                  number: 4200

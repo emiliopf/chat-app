@@ -1,0 +1,5 @@
+.vscode
+
+microservices/*/*
+
+!microservices/*/k8s
