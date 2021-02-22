@@ -15,8 +15,8 @@ build:
       - src: 'src/**/*.ts'
         dest: .
 
-  - image: coches/rabbitmq-backend
-    context: microservices/rabbitmq-backend
+  - image: coches/rabbitmq-auth-backend
+    context: microservices/rabbitmq-auth-backend
     sync:
       manual:
       - src: 'src/**/*.ts'
@@ -38,7 +38,7 @@ deploy:
     # - ./microservices/*/k8s/*.yaml
     - ./microservices/users/k8s/*.yaml
     - ./microservices/rooms/k8s/*.yaml
-    - ./microservices/rabbitmq-backend/k8s/*.yaml
+    - ./microservices/rabbitmq-auth-backend/k8s/*.yaml
     - ./microservices/frontend/k8s/*.yaml
 
     - ./databases/*/k8s/*.yaml

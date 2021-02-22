@@ -5,7 +5,7 @@ metadata:
   # namespace: test-rabbitmq
 data:
   enabled_plugins: |
-      [rabbitmq_management,rabbitmq_peer_discovery_k8s, rabbitmq_stomp, rabbitmq_web_stomp].
+      [rabbitmq_management,rabbitmq_peer_discovery_k8s, rabbitmq_stomp, rabbitmq_web_stomp, rabbitmq_auth_backend_http].
   rabbitmq.conf: |
       ## Cluster formation. See https://www.rabbitmq.com/cluster-formation.html to learn more.
       cluster_formation.peer_discovery_backend  = rabbit_peer_discovery_k8s
@@ -32,5 +32,13 @@ data:
       ## credentials instead.
       ## Learn more at https://www.rabbitmq.com/access-control.html#loopback-users
       loopback_users.guest = false
-      # stomp.default_user = user_stomp
-      # stomp.default_pass = user_stomp
+
+      # HTTP_BACKEND_AUTH CONFIG https://github.com/rabbitmq/rabbitmq-server/tree/master/deps/rabbitmq_auth_backend_http
+      auth_backends.1 = internal
+      auth_backends.2 = http
+      auth_http.http_method   = post
+      auth_http.user_path     = http://rabbitmq-auth-backend:3000/auth/user
+      auth_http.vhost_path    = http://rabbitmq-auth-backend:3000/auth/vhost
+      auth_http.resource_path = http://rabbitmq-auth-backend:3000/auth/resource
+      auth_http.topic_path    = http://rabbitmq-auth-backend:3000/auth/topic
+

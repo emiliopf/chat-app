@@ -24,13 +24,6 @@ spec:
                 name: rooms
                 port:
                   number: 3000
-          - path: /api/rabbitmq
-            pathType: Prefix
-            backend:
-              service:
-                name: rabbitmq-backend
-                port:
-                  number: 3000
           - path: /
             pathType: Prefix
             backend:
