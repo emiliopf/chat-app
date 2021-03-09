@@ -3,4 +3,7 @@ kind: ConfigMap
 metadata:
   name: frontend-config
 data:
-  FOO: 'foo'
+  env-config.json: |
+   {
+     "host": "emiliodev"
+   }

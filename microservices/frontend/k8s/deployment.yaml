@@ -18,9 +18,14 @@ spec:
         ports:
         # - containerPort: 80
           - containerPort: 4200
+        volumeMounts:
+          - mountPath: /app/src/assets/
+            name: env-config
         envFrom:
           - configMapRef:
               name: frontend-config
-          - secretRef:
-              name:  frontend-secret
+      volumes:
+        - name: env-config
+          configMap:
+            name: frontend-config  
             
