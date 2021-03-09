@@ -60,7 +60,7 @@ App deployed over k8s cluster.
 *1: STOMP over websockets.
 
 
-## Gettiing Started
+## Getting Started
 
 ### Prerequisites
 
