@@ -73,7 +73,7 @@ App deployed over k8s cluster.
 
 1. Execute `initiateRepositories.sh`
 2. Configure mysql [endpoint](/databases/mysql/k8s/endpoint.yaml) with your mysql server.
-4. Ensure [rooms](/microservices/rooms/k8s/config_map.yaml) a [users](/microservices/users/k8s/config_map.yaml) scheme exist in your database server.
+4. Ensure [rooms](/microservices/rooms/k8s/config_map.yaml) and [users](/microservices/users/k8s/config_map.yaml) scheme exist in your database server.
 3. Change mysql credentials in [rooms](/microservices/rooms/k8s/secret.yaml) and [users](/microservices/users/k8s/secret.yaml) secrect.yaml
 4. Change host in [ingress](/ingress.yaml) and frontend [configmap](/microservices/frontend/k8s/config_map.yaml) with your `minikube ip`
 5. Launch `skaffold dev -f skaffold.yaml`
