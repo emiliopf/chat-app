@@ -1,35 +1,30 @@
 <p align="center">
 
   <h3 align="center">CHAT APP</h3>
-
   <p align="center">
     An over complex chat app.
     <br />
   </p>
 </p>
 
+![preview](/images/preview.gif)
 
 <!-- TABLE OF CONTENTS -->
 <details open="open">
   <summary>Table of Contents</summary>
   <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li><a href="#architecture">Architecture</a></li>
-    <li><a href="#data-flow">Data Flow</a></li>
+    <li><a href="#about-the-project">About The Project</a></li>
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
+        <li><a href="#set-up">Set Up</a></li>
       </ul>
     </li>
+    <li><a href="#architecture">Architecture</a></li>
+    <li><a href="#microservicesw">Microservices</a></li>
+    <li><a href="#built-with">Built With</a></li>
     <li><a href="#license">License</a></li>
-    <li><a href="#acknowledgements">Acknowledgements</a></li>
   </ol>
 </details>
 <br />
@@ -43,6 +38,45 @@ App developed only with learning intention. One of the main goals is create an e
 Other objetives are learn kubernetes components and build a whole app from nothing, use a modern nodejs framework like NestJS, make a first approach to Angular and use RabbitMQ as message broker.
 
 
+## Gettiing Started
+
+### Prerequisites
+
+* [Minikube](https://github.com/kubernetes/minikube)
+* [Skaffold](https://github.com/GoogleContainerTools/skaffold)
+* Mysql Server
+
+
+### Set Up
+
+1. Execute `initiateRepositories.sh`
+2. Configure mysql [endpoint](/databases/mysql/k8s/endpoint.yaml) with your mysql server.
+3. Change mysql credentials in [rooms](/microservices/rooms/k8s/secret.yaml) and [users](/microservices/users/k8s/secret.yaml) secrect.yaml
+4. Change host in [ingress](/ingress.yaml) with your `minikube ip`
+5. Launch `skaffold dev -f skaffold.yaml`
+
+Make sure you initiated minikube and enabled ingress (`minikube addons enable ingress`) before launch skaffold.
+
+## Architecture 
+
+![Arch](/images/arch.png)
+
+App deployed over k8s cluster.
+
+
+## Microservices
+
+* [Users](https://github.com/emiliopf/chat-users)
+* [Rooms](https://github.com/emiliopf/chat-rooms)
+* [Rabbit Auth Backend](https://github.com/emiliopf/chat-rabbitmq-auth-backend)
+* [Frontend](https://github.com/emiliopf/chat-frontend)
+
+### Data Flow
+
+![Arch](/images/flow.png)
+
+*1: STOMP over websockets.
+
 
 ### Built With
 
@@ -53,32 +87,6 @@ Other objetives are learn kubernetes components and build a whole app from nothi
 * [MySQL](https://mysql.com)
 
 
-## Architecture 
+## License
 
-![Arch](/images/arch.png)
-
-App deployed over k8s cluster.
-
-
-## Data Flow
-
-![Arch](/images/flow.png)
-
-*1: STOMP over websockets.
-
-
-## Gettiing Started
-
-### Prerequisites
-
-* [Minikube](https://github.com/kubernetes/minikube)
-* [Skaffold](https://github.com/GoogleContainerTools/skaffold)
-* Mysql Server
-
-
-
-
-
-
-
-
+[MIT licensed](LICENSE)
