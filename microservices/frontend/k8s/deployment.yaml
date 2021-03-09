@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: coches/frontend
+        image: chat/frontend
         imagePullPolicy: Never
         ports:
         # - containerPort: 80

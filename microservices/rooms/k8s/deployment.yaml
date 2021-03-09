@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: rooms
-        image: coches/rooms
+        image: chat/rooms
         imagePullPolicy: Never
         ports:
         - containerPort: 3000

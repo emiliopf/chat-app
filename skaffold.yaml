@@ -2,27 +2,27 @@ apiVersion: skaffold/v2alpha4
 kind: Config
 build:
   artifacts:
-  - image: coches/users
+  - image: chat/users
     context: microservices/users
     sync:
       manual:
       - src: 'src/**/*.ts'
         dest: .
-  - image: coches/rooms
+  - image: chat/rooms
     context: microservices/rooms
     sync:
       manual:
       - src: 'src/**/*.ts'
         dest: .
 
-  - image: coches/rabbitmq-auth-backend
+  - image: chat/rabbitmq-auth-backend
     context: microservices/rabbitmq-auth-backend
     sync:
       manual:
       - src: 'src/**/*.ts'
         dest: .
 
-  - image: coches/frontend
+  - image: chat/frontend
     context: microservices/frontend
     docker:
       dockerfile: dev.Dockerfile
@@ -35,11 +35,11 @@ build:
 deploy:
   kubectl:
     manifests:
-    # - ./microservices/*/k8s/*.yaml
-    - ./microservices/users/k8s/*.yaml
-    - ./microservices/rooms/k8s/*.yaml
-    - ./microservices/rabbitmq-auth-backend/k8s/*.yaml
-    - ./microservices/frontend/k8s/*.yaml
+    - ./microservices/*/k8s/*.yaml
+    # - ./microservices/users/k8s/*.yaml
+    # - ./microservices/rooms/k8s/*.yaml
+    # - ./microservices/rabbitmq-auth-backend/k8s/*.yaml
+    # - ./microservices/frontend/k8s/*.yaml
 
     - ./databases/*/k8s/*.yaml
     - ./rabbitmq/*.yaml

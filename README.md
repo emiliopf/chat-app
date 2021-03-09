@@ -9,6 +9,7 @@
 
 ![preview](/images/preview.gif)
 
+
 <!-- TABLE OF CONTENTS -->
 <details open="open">
   <summary>Table of Contents</summary>
@@ -22,7 +23,7 @@
       </ul>
     </li>
     <li><a href="#architecture">Architecture</a></li>
-    <li><a href="#microservicesw">Microservices</a></li>
+    <li><a href="#microservices">Microservices</a></li>
     <li><a href="#built-with">Built With</a></li>
     <li><a href="#license">License</a></li>
   </ol>
@@ -51,6 +52,7 @@ Other objetives are learn kubernetes components and build a whole app from nothi
 
 1. Execute `initiateRepositories.sh`
 2. Configure mysql [endpoint](/databases/mysql/k8s/endpoint.yaml) with your mysql server.
+4. Ensure [rooms](/microservices/rooms/k8s/config_map.yaml) a [users](/microservices/users/k8s/config_map.yaml) scheme exist in your database server.
 3. Change mysql credentials in [rooms](/microservices/rooms/k8s/secret.yaml) and [users](/microservices/users/k8s/secret.yaml) secrect.yaml
 4. Change host in [ingress](/ingress.yaml) and frontend [configmap](/microservices/frontend/k8s/config_map.yaml) with your `minikube ip`
 5. Launch `skaffold dev -f skaffold.yaml`
