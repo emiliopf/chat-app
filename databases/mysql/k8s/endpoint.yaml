@@ -4,6 +4,10 @@ metadata:
   name: mysql
 subsets:
   - addresses:
-      - ip: 172.17.0.1
+      # If you want to use a mysql running on your host machine get the host.minikube.internal
+      # > minikube ssh
+      # > dig host.minikube.internal
+      # SERVER would change depends on your VM driver.
+      - ip: 192.168.49.1
     ports:
       - port: 3306

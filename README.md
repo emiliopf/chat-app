@@ -13,7 +13,7 @@
 ## About The Project
 
 
-App developed only with learning intention. One of the main goals is create an efficient develop environment over Minikube.
+App developed only with learning intention. One of the main goals is create an efficient development environment over Minikube.
 
 Other objetives are learn kubernetes components and build a whole app from nothing, use a modern nodejs framework like NestJS, make a first approach to Angular and use RabbitMQ as message broker.
 
@@ -69,6 +69,9 @@ App deployed over k8s cluster.
 * Mysql Server
 
 
+```
+11/03/2021 - Tested on Ubuntu 18.04, Minikube v1.18.1, Kubernetes v1.20.2, Docker 20.10.3, Skaffold v1.20.0
+```
 ### Set Up
 
 1. Execute `initiateRepositories.sh`
